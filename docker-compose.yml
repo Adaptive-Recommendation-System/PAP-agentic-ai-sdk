@@ -1,0 +1,26 @@
+
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "${OLLAMA_PORT}:${OLLAMA_PORT}"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+  app:
+    build: .
+    container_name: langchain-app
+    environment:
+      - MODEL_NAME=${MODEL_NAME}
+      - OLLAMA_BASE_URL=http://ollama:${OLLAMA_PORT}
+    depends_on:
+      - ollama
+    volumes:
+      - .:/app
+    command: python -m langchain_orchestration.main
+
+volumes:
+  ollama_data:

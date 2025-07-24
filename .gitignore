@@ -1,10 +1,8 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-
-# Virtual environment
 .venv/
 env/
 venv/
@@ -16,8 +14,7 @@ venv/
 # macOS/Linux system files
 .DS_Store
 Thumbs.db
-
-# Python environment and tooling
+*.egg-info/
 *.env
 *.env.*           # for dotenv variants like .env.dev
 *.egg
@@ -26,35 +23,42 @@ dist/
 build/
 pip-wheel-metadata/
 
-# Pytest / coverage
+# Dotenv & environment configs
+.env
+.env.*
+*.env
+
+# Docker-related
+ollama_data/
+.ollama/
+*.log
+*.pid
+docker-compose.override.yml
+
+# IDE/Tools
+.vscode/
+.history/
+.DS_Store
+Thumbs.db
+
+# Test/coverage cache
 .cache/
 .coverage
 *.cover
 htmlcov/
-
-# MyPy / Pyright / Pylint
 .mypy_cache/
 .pyright/
 .pytest_cache/
 pylint-report.txt
 reports/
 
-# Jupyter / IPython
-.ipynb_checkpoints/
-*.ipynb
-
-# Docker
-*.pid
-*.log
-docker-compose.override.yml
-
-# Node (if you add frontend SDK here later)
+# Node/JS (for future frontend)
 node_modules/
 npm-debug.log
 yarn-debug.log
 yarn-error.log
 pnpm-debug.log
 
-# FAISS/SQLite/DB artifacts (if used)
+# Database/FAISS/SQLite
 *.db
 *.sqlite

@@ -1,0 +1,62 @@
+# Exclude version control system stuff
+.git
+.gitignore
+
+# Python/Caches
+_pycache_/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE/editor settings
+.vscode/
+.history/
+.DS_Store
+Thumbs.db
+
+# Python virtual environments
+.venv/
+env/
+venv/
+
+# Node (in case you add a frontend)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Build artifacts and distributions
+build/
+dist/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+
+# Dotenv and secrets
+.env
+.env.*
+*.env
+
+# Coverage/test
+.cache/
+.coverage
+*.cover
+htmlcov/
+.mypy_cache/
+.pyright/
+.pytest_cache/
+
+# Log files
+*.log
+*.pid
+
+# Data/models/caches
+ollama_data/
+.ollama/
+*.db
+*.sqlite
+
+# Jupyter/IPython
+.ipynb_checkpoints/
+*.ipynb

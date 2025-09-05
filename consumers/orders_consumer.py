@@ -5,7 +5,7 @@ from langchain_ollama.chat_models import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
 
 
-def consume_search_events():
+def consume_orders_events():
 
     llm = ChatOllama(model="phi3:mini")
 
@@ -13,26 +13,26 @@ def consume_search_events():
         [
             (
                 "system",
-                "You are an data analyst for an e-commerce platform. Your job is to interpret the search input and provide a concise, one-sentence summary of the query.",
+                "You are an order analyst for an e-commerce platform. Your job is to interpret order details and provide a concise, one-sentence summary of the order.",
             ),
-            ("human", "Search event: {event_data}"),
+            ("human", "Order event: {event_data}"),
         ]
     )
 
     chain = prompt | llm
 
-    searchConsumer = KafkaConsumer(
-        "dev.amazon-clone.user-searches",
+    ordersConsumer = KafkaConsumer(
+        "dev.amazon-clone.orders",
         bootstrap_servers=["localhost:29092"],
-        group_id="search-agent-group-3",
+        group_id="events-agent-group-2",
         # This helps decode the message from bytes to a string
         value_deserializer=lambda m: json.loads(m.decode("utf-8")),
     )
 
-    print("Consumer is listening for messages on 'dev.amazon-clone.user-searches'...")
+    print("Consumer is listening for messages on 'dev.amazon-clone.orders'...")
 
     # A consumer is like an iterable, we can loop over it forever
-    for message in searchConsumer:
+    for message in ordersConsumer:
         # message.value is the data we sent from our Next.js app
         print(f"Received message: {message.value}")
 
